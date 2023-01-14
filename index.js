@@ -111,4 +111,4 @@ bot.on('chat', (username, message) => {
             // output : [thuy#5407] uk toi yeu sex | 1234567890
 
 keepAlive();
-client.login(config.token);
+client.login(config.token)
