@@ -1,4 +1,3 @@
-
 var mineflayer = require('mineflayer');
 var fs = require('fs');
 const { Client, MessageEmbed } = require("discord.js");
@@ -10,7 +9,7 @@ const ms = require('ms');
 require('dotenv').config();
 const { username, livechat } = require('./config.json');
 
-const config = {
+const config = { // woah!! .env!!
   token: process.env.DISCORD_TOKEN,
   pin: process.env.PIN
 };
@@ -19,24 +18,23 @@ client.on('ready', () => {
   console.log(`${client.user.tag} đang hoạt động`);
 });
 
-
-
 createBot();
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'anarchyvn.net',
     port: 25565,
     username: username,
-    version: "1.12.2"
+    version: "1.12.2" // toi thich 1.12.2 hjhj
   });
-  bot.on('windowOpen', async (window) => {
+  bot.on('windowOpen', async (window) => { // login cơ bản.
     window.requiresConfirmation = false;
     bot.clickWindow(config.pin.split(" ")[0], 0, 0)
     bot.clickWindow(config.pin.split(" ")[1], 0, 0)
     bot.clickWindow(config.pin.split(" ")[2], 0, 0)
     bot.clickWindow(config.pin.split(" ")[3], 0, 0)
-    setTimeout(() => { bot.clickWindow(13, 0, 0); }, ms(`5s`));
     setTimeout(() => { bot.chat('/anarchyvn') }, ms(`5s`))
+    setTimeout(() => { bot.clickWindow(13, 0, 0); }, ms(`5s`));
+ // setInterval(() => { bot.chat (`Hãy sử dụng lệnh ,help để có commands! [${randomnum}]`)},ms(`1200s`)); (add this neu ban muon)
   });
   bot.once('login', () => {
     bot.once('spawn', () => {
@@ -79,10 +77,26 @@ function createBot() {
     if (message.author.bot || message.author.id === client.user.id) return;
     if (message.channel.id === livechat) {
       message.react('❤');
-      bot.chat(`[${message.author.tag}] ${message.content}`)
+      bot.chat(`[${message.author.tag}] ${message.content}`) // Yêu cầu bot bật sẵn MESSAGE CONTENT INTENT không thì Discord -> Minecraft chat sẽ không được.
     }
 
+// TRASH CODE INCOMING ALLAHU AKBAR!!!!
+			var string = `1 2 3 4 5 6 6 7 8 9 0`;
+			var words = string.split(' ');
+            let random1 = words[Math.floor(Math.random() * words.length)];
+            let random2 = words[Math.floor(Math.random() * words.length)];
+            let random3 = words[Math.floor(Math.random() * words.length)];
+            let random4 = words[Math.floor(Math.random() * words.length)];
+            let random5 = words[Math.floor(Math.random() * words.length)];
+            let random6 = words[Math.floor(Math.random() * words.length)];
+            let random7 = words[Math.floor(Math.random() * words.length)];
+            let random8 = words[Math.floor(Math.random() * words.length)];
+            let random9 = words[Math.floor(Math.random() * words.length)];
+            let random10 = words[Math.floor(Math.random() * words.length)];
+            var randomnum = `${random1}${random2}${random3}${random4}${random5}${random6}${random7}${random8}${random9}${random10}`
+            // example :
+            // bot.chat(`[${message.author.tag}] ${message.content} | ${randomnum}`) thi output ra
+            // output : [thuy#5407] uk toi yeu sex | 1234567890
 
-    
 keepAlive();
 client.login(config.token);
