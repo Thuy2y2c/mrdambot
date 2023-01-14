@@ -24,7 +24,7 @@ function createBot() {
     host: 'anarchyvn.net',
     port: 25565,
     username: username,
-    version: "1.12.2" // toi thich 1.12.2 hjhj
+    version: "1.17.1"
   });
   bot.on('windowOpen', async (window) => { // login cơ bản.
     window.requiresConfirmation = false;
