@@ -72,6 +72,14 @@ function createBot() {
       .setColor('WHITE')
     client.channels.cache.get(livechat).send(embed)
   });
+// an example of an command
+bot.on('chat', (username, message) => {
+    if (username === bot.username) return
+    if (message === ',bulon') { // input tu chat
+      bot.chat(`them bu lon qua!! | | ${randomnum}`) // output tu chat ban hieu chua
+    }
+  })
+
   client.on('message', async message => { // discord to minecraft
     if (!message.guild) return;
     if (message.author.bot || message.author.id === client.user.id) return;
