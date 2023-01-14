@@ -2,6 +2,7 @@ var mineflayer = require('mineflayer');
 var fs = require('fs');
 const { Client, MessageEmbed } = require("discord.js");
 const client = new Client();
+const tpsPlugin = require('mineflayer-tps')(mineflayer); // tps plugin for command !tps
 const keepAlive = require("./server");
 const superagent = require("superagent")
 const util = require('minecraft-server-util');
@@ -35,6 +36,9 @@ function createBot() {
     setTimeout(() => { bot.chat('/anarchyvn') }, ms(`5s`))
     setTimeout(() => { bot.clickWindow(13, 0, 0); }, ms(`5s`));
  // setInterval(() => { bot.chat (`Hãy sử dụng lệnh ,help để có commands! [${randomnum}]`)},ms(`1200s`)); (add this neu ban muon)
+
+bot.loadPlugin(tpsPlugin) // load plugin
+
   });
   bot.once('login', () => {
     bot.once('spawn', () => {
@@ -72,13 +76,13 @@ function createBot() {
       .setColor('WHITE')
     client.channels.cache.get(livechat).send(embed)
   });
-// an example of an command
+// does dependabot update the packages please please iam too lazy!!
 bot.on('chat', (username, message) => {
-    if (username === bot.username) return
-    if (message === ',bulon') { // input tu chat
-      bot.chat(`them bu lon qua!! | | ${randomnum}`) // output tu chat ban hieu chua
-    }
-  })
+  if (username === bot.username) return
+  if (message === ',tps') {
+    bot.chat('ronaldo siuuu btw the tps is : ' + bot.getTps ())
+  }
+})
 
   client.on('message', async message => { // discord to minecraft
     if (!message.guild) return;
