@@ -7,7 +7,7 @@ server.all('/', (req, res)=>{
 })
 
 function keepAlive(){
-   server.listen(3000, ()=>{console.log(`I'm alive | Admin: Huybloxgaming#1648`)});
+   server.listen(3000, ()=>{console.log(`edp was looking for a cupcake in port 3000..`)});
 }
 
 module.exports = keepAlive;
