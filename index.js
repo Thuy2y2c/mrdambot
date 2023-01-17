@@ -40,9 +40,6 @@ function createBot() {
 
 bot.loadPlugin(tpsPlugin) // load plugin
 
-//Hệ thống randomnum : ${randomnum}
-var randomnum = (Math.random() + 1).toString(36).substring(8);
-  
   bot.once('login', () => {
     bot.once('spawn', () => {
       const spawn = new MessageEmbed()
@@ -92,7 +89,7 @@ var randomnum = (Math.random() + 1).toString(36).substring(8);
     if (message.author.bot || message.author.id === client.user.id) return;
     if (message.channel.id === livechat) {
       message.react('❤');
-      bot.chat(`[${message.author.tag}] ${message.content} | ${randomnum}`) // randomnum sẽ có thể lập đi lập lại một cái nên ae đừng đặt [] xung quanh nếu không muốn triệu hồi BẢO REN
+      bot.chat(`[${message.author.tag}] ${message.content} | mrdambot`)
     }
   })
 }
