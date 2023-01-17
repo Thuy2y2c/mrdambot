@@ -36,10 +36,12 @@ function createBot() {
     bot.clickWindow(config.pin.split(" ")[3], 0, 0)
     setTimeout(() => { bot.chat('/anarchyvn') }, ms(`5s`))
     setTimeout(() => { bot.clickWindow(13, 0, 0); }, ms(`5s`));
- // setInterval(() => { bot.chat (`Hãy sử dụng lệnh ,help để có commands!`)},ms(`1200s`)); (add this neu ban muon)
   });
 
 bot.loadPlugin(tpsPlugin) // load plugin
+
+//Hệ thống randomnum : ${randomnum}
+var randomnum = (Math.random() + 1).toString(36).substring(8);
   
   bot.once('login', () => {
     bot.once('spawn', () => {
@@ -84,13 +86,13 @@ bot.loadPlugin(tpsPlugin) // load plugin
       bot.chat('ronaldo siuuu btw the tps is : ' + bot.getTps ())
     }
   })
- 
+
   client.on('message', async message => {
     if (!message.guild) return;
     if (message.author.bot || message.author.id === client.user.id) return;
     if (message.channel.id === livechat) {
       message.react('❤');
-      bot.chat(`[${message.author.tag}] ${message.content} | mrdambot`)
+      bot.chat(`[${message.author.tag}] ${message.content} | ${randomnum}`) // randomnum sẽ có thể lập đi lập lại một cái nên ae đừng đặt [] xung quanh nếu không muốn triệu hồi BẢO REN
     }
   })
 }
