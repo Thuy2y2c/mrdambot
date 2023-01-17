@@ -1,3 +1,4 @@
+
 var mineflayer = require('mineflayer');
 var fs = require('fs');
 const { Client, MessageEmbed } = require("discord.js");
@@ -10,13 +11,13 @@ const ms = require('ms');
 require('dotenv').config();
 const { username, livechat } = require('./config.json');
 
-const config = { // woah!! .env!!
+const config = {
   token: process.env.DISCORD_TOKEN,
   pin: process.env.PIN
 };
 
 client.on('ready', () => {
-  console.log(`${client.user.tag} đang hoạt động`);
+  console.log(`${client.user.tag} đang hoạt động...`);
 });
 
 createBot();
@@ -27,7 +28,7 @@ function createBot() {
     username: username,
     version: "1.17.1"
   });
-  bot.on('windowOpen', async (window) => { // login cơ bản.
+  bot.on('windowOpen', async (window) => {
     window.requiresConfirmation = false;
     bot.clickWindow(config.pin.split(" ")[0], 0, 0)
     bot.clickWindow(config.pin.split(" ")[1], 0, 0)
@@ -35,18 +36,18 @@ function createBot() {
     bot.clickWindow(config.pin.split(" ")[3], 0, 0)
     setTimeout(() => { bot.chat('/anarchyvn') }, ms(`5s`))
     setTimeout(() => { bot.clickWindow(13, 0, 0); }, ms(`5s`));
- // setInterval(() => { bot.chat (`Hãy sử dụng lệnh ,help để có commands! [${randomnum}]`)},ms(`1200s`)); (add this neu ban muon)
+ // setInterval(() => { bot.chat (`Hãy sử dụng lệnh ,help để có commands!`)},ms(`1200s`)); (add this neu ban muon)
+  });
 
 bot.loadPlugin(tpsPlugin) // load plugin
-
-  });
+  
   bot.once('login', () => {
     bot.once('spawn', () => {
       const spawn = new MessageEmbed()
-        .setDescription(`**Bot đã đăng nhập vào server**`)
+        .setDescription(`**Bot đã thành công truy cập vào server.**`)
         .setColor('GREEN')
       client.channels.cache.get(livechat).send(spawn)
-      console.log("Bot đã đăng nhập vào server");
+      console.log("Đã đăng nhập. Bắt đầu làm việc.");
       setInterval(() => {
         bot.swingArm("left");
         bot.look(Math.floor(Math.random() * Math.floor("360")), 0, true, null);
@@ -56,16 +57,16 @@ bot.loadPlugin(tpsPlugin) // load plugin
   var reconnect = 1;
   bot.on('end', (reason) => {
     const end = new MessageEmbed()
-      .setDescription(`**Bot mất kết nối server, lý do: \`${reason}\`\, kết nối lại sau ${reconnect} giây**`)
+      .setDescription(`**Bot đã bị mất kết nối, lý do: \`${reason}\`\, kết nối lại sau ${reconnect} giây**`)
       .setColor('RED')
     client.channels.cache.get(livechat).send(end)
-    console.log(`Bot mất kết nối server, lý do: ${reason}, kết nối lại sau ${reconnect}s`);
+    console.log(`Đụ mẹ owner, lý do mất kết nối: ${reason}, kết nối lại sau ${reconnect}s`);
     setTimeout(() => {
       const relog = new MessageEmbed()
-        .setDescription(`**Đang kết nối lại server...**`)
+        .setDescription(`**Đang kết nối lại với server...**`)
         .setColor('YELLOW')
       client.channels.cache.get(livechat).send(relog)
-      console.log("Đang kết nối lại server...");
+      console.log("oke tao vào lại đây");
       createBot();
     }, ms(`${reconnect}s`))
   });
@@ -76,39 +77,23 @@ bot.loadPlugin(tpsPlugin) // load plugin
       .setColor('WHITE')
     client.channels.cache.get(livechat).send(embed)
   });
-// does dependabot update the packages please please iam too lazy!!
-bot.on('chat', (username, message) => {
-  if (username === bot.username) return
-  if (message === ',tps') {
-    bot.chat('ronaldo siuuu btw the tps is : ' + bot.getTps ())
-  }
-})
-
-  client.on('message', async message => { // discord to minecraft
+  
+  bot.on('chat', (username, message) => {
+    if (username === bot.username) return
+    if (message === ',tps') {
+      bot.chat('ronaldo siuuu btw the tps is : ' + bot.getTps ())
+    }
+  })
+ 
+  client.on('message', async message => {
     if (!message.guild) return;
     if (message.author.bot || message.author.id === client.user.id) return;
     if (message.channel.id === livechat) {
       message.react('❤');
-      bot.chat(`[${message.author.tag}] ${message.content}`) // Yêu cầu bot bật sẵn MESSAGE CONTENT INTENT không thì Discord -> Minecraft chat sẽ không được.
+      bot.chat(`[${message.author.tag}] ${message.content} | mrdambot`)
     }
-
-// TRASH CODE INCOMING ALLAHU AKBAR!!!!
-			var string = `1 2 3 4 5 6 6 7 8 9 0`;
-			var words = string.split(' ');
-            let random1 = words[Math.floor(Math.random() * words.length)];
-            let random2 = words[Math.floor(Math.random() * words.length)];
-            let random3 = words[Math.floor(Math.random() * words.length)];
-            let random4 = words[Math.floor(Math.random() * words.length)];
-            let random5 = words[Math.floor(Math.random() * words.length)];
-            let random6 = words[Math.floor(Math.random() * words.length)];
-            let random7 = words[Math.floor(Math.random() * words.length)];
-            let random8 = words[Math.floor(Math.random() * words.length)];
-            let random9 = words[Math.floor(Math.random() * words.length)];
-            let random10 = words[Math.floor(Math.random() * words.length)];
-            var randomnum = `${random1}${random2}${random3}${random4}${random5}${random6}${random7}${random8}${random9}${random10}`
-            // example :
-            // bot.chat(`[${message.author.tag}] ${message.content} | ${randomnum}`) thi output ra
-            // output : [thuy#5407] uk toi yeu sex | 1234567890
+  })
+}
 
 keepAlive();
-client.login(config.token)
+client.login(config.token);
