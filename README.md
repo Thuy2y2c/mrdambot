@@ -2,9 +2,13 @@
     <img src="https://cdn.discordapp.com/attachments/1063837081236942909/1066281370562854922/image.png" style="width: 69%">
 </p>
 
-mrdambot là một repo hoàn toàn miễn phí, mã nguồn mở.
-Nhằm mục đích mong muốn anh em biến anarchyvn thành 9b9t.
-SKID NÓ. PHÁ NÓ. BÁN NÓ. LÀM CÁI GÌ BẠN MUỐN VỚI CẢI REPO NÀY CŨNG ĐƯỢC :D
+# mrdambot
+meow this repo is created by a insane shithead
+
+<p align="center">
+  <a href="http://forthebadge.com/"><img src="https://forthebadge.com/images/badges/contains-cat-gifs.svg" alt="forthebadge"/></a>
+  <a href="http://forthebadge.com/"><img src="https://forthebadge.com/images/badges/0-percent-optimized.svg" alt="forthebadge"/></a>
+</p>
 
 ## Thông tin về repo
 Được tạo với mục đích là tỏ tình femboy, làm top femboy.
