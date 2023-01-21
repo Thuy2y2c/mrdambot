@@ -7,7 +7,7 @@ server.all('/', (req, res)=>{
 })
 
 function keepAlive(){
-   server.listen(3000, ()=>{console.log(`edp was looking for a cupcake in port 3000..`)});
+   server.listen(3000, ()=>{console.log(`Bot của bạn đang được hoạt động.`)});
 }
 
 module.exports = keepAlive;
