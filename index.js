@@ -13,12 +13,13 @@ const { username, livechat } = require('./config.json');
 
 const config = {
   token: process.env.DISCORD_TOKEN,
-  pin: process.env.PIN
+  pin: process.env.PIN,
+  prefix: process.env.PREFIX
 };
 
 client.on('ready', () => {
   console.log(`${client.user.tag} đang hoạt động...`);
-  client.user.setActivity('anarchyvn.net', { type: 'PLAYING' }); // discord status.. wow.
+  client.user.setActivity('anarchyvn.', { type: 'PLAYING' }); // discord status
 });
 
 createBot();
@@ -78,23 +79,23 @@ bot.loadPlugin(tpsPlugin) // load plugin
     client.channels.cache.get(livechat).send(embed)
   });
   
-  bot.on('chat', (username, message) => { // tps command
+  bot.on('chat', (username, message) => {
     if (username === bot.username) return
-    if (message === ',tps') {
+    if (message === config.prefix + 'tps') {
       bot.chat('ronaldo siuuu btw the tps is : ' + bot.getTps ())
     }
   })
 
-  bot.on('chat', (username, message) => { // ping command
+  bot.on('chat', (username, message) => { // co thang bao dung meteor de lay ping how wtf
     if (username === bot.username) return
-    if (message === ',ping') {
+    if (message === config.prefix + 'ping') {
       bot.chat(`your ping is : ${bot.player.ping}ms`)
     }
   })
 
-  bot.on('chat', (username, message) => { // help command
+  bot.on('chat', (username, message) => {
     if (username === bot.username) return
-    if (message === ',help') {
+    if (message === config.prefix + 'help') {
       bot.chat(`/w ${username} tps, ping | | mrdambot`)
     }
   })
