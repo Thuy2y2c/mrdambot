@@ -24,5 +24,5 @@ AnarchyVN và 2y2c.org ( for now )
 2. Sau khi mình install xong thì vào trong file config.json để set tên cho bot và channel id...
 3. Sau khi set xong. Clone env.example và rename nó thành .env và điền discord token, pin và prefix.
 4. Vào Developer Portal, vào Applications > Cái app của bạn > Bot và bật MESSAGE CONTENT INTENT ở mục Privileged Gateway Intents
-5. Sau khi mọi thứ đã được điền đúng nơi đúng chỗ. Để bật bot thì dùng lệnh `npm .`
+5. Sau khi mọi thứ đã được điền đúng nơi đúng chỗ. Để bật bot thì dùng lệnh `node .`
 - Nếu dùng trên replit.com thì ta skip step 1, step 5 thì ta bấm start.
