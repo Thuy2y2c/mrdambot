@@ -84,6 +84,13 @@ bot.loadPlugin(tpsPlugin) // load plugin
     }
   })
 
+  bot.on('chat', (username, message) => { // co thang bao dung meteor de lay ping how wtf
+    if (username === bot.username) return
+    if (message === ',ping') {
+      bot.chat(`your ping is : ${bot.player.ping}ms`)
+    }
+  })
+
   client.on('message', async message => {
     if (!message.guild) return;
     if (message.author.bot || message.author.id === client.user.id) return;
