@@ -18,6 +18,7 @@ const config = {
 
 client.on('ready', () => {
   console.log(`${client.user.tag} đang hoạt động...`);
+  client.user.setActivity('anarchyvn.net', { type: 'PLAYING' }); // discord status.. wow.
 });
 
 createBot();
@@ -77,17 +78,24 @@ bot.loadPlugin(tpsPlugin) // load plugin
     client.channels.cache.get(livechat).send(embed)
   });
   
-  bot.on('chat', (username, message) => {
+  bot.on('chat', (username, message) => { // tps command
     if (username === bot.username) return
     if (message === ',tps') {
       bot.chat('ronaldo siuuu btw the tps is : ' + bot.getTps ())
     }
   })
 
-  bot.on('chat', (username, message) => { // co thang bao dung meteor de lay ping how wtf
+  bot.on('chat', (username, message) => { // ping command
     if (username === bot.username) return
     if (message === ',ping') {
       bot.chat(`your ping is : ${bot.player.ping}ms`)
+    }
+  })
+
+  bot.on('chat', (username, message) => { // help command
+    if (username === bot.username) return
+    if (message === ',help') {
+      bot.chat(`/w ${username} tps, ping | | mrdambot`)
     }
   })
 
