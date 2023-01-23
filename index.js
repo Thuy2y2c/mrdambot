@@ -1,4 +1,3 @@
-
 var mineflayer = require('mineflayer');
 var fs = require('fs');
 const { Client, MessageEmbed } = require("discord.js");
@@ -18,9 +17,19 @@ const config = {
 };
 
 client.on('ready', () => {
-  console.log(`${client.user.tag} đang hoạt động...`);
-  client.user.setActivity('anarchyvn.', { type: 'PLAYING' }); // discord status
-});
+  console.log(`${client.user.tag} đang hoạt động...`); // omg so cool
+  setInterval(() => {
+  const statuses = [
+    "thuy#5407 dang update mrdambot",
+    "join mrdampvp",
+    "anarchyvn has the best economy ever",
+    "and logging the mc chat",
+    "cart has autism "
+  ]
+  const status = statuses[Math.floor(Math.random() *statuses.length)]
+  client.user.setActivity(status, {type: "WATCHING"})
+}, 4000
+)})
 
 createBot();
 function createBot() {
@@ -38,6 +47,7 @@ function createBot() {
     bot.clickWindow(config.pin.split(" ")[3], 0, 0)
     setTimeout(() => { bot.chat('/anarchyvn') }, ms(`5s`))
     setTimeout(() => { bot.clickWindow(13, 0, 0); }, ms(`5s`));
+//  setInterval(() => { bot.chat(`bot tự chat mỗi 60 giây kìa. | ${randomnum}`) }, ms(`60s`)); <-- i need to make a randomizer
   });
 
 bot.loadPlugin(tpsPlugin) // load plugin
