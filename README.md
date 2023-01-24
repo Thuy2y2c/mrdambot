@@ -2,6 +2,9 @@
     <img src="https://cdn.discordapp.com/attachments/1063837081236942909/1066281370562854922/image.png" style="width: 69%">
 </p>
 
+# XIN HÃY ĐỌC PHẦN NÀY TRƯỚC.
+Thuy sẽ tạm thời tạm dừng bot (rảnh chán sẽ update), sẽ up bot lên Discord.JS v14 và sẽ cải thiện bot lên nhiều. Cảm ơn!
+
 # mrdambot
 meow this repo is created by a insane shithead
 
